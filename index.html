@@ -54,10 +54,10 @@
     ], function (esriConfig, WebMap, MapView, FeatureLayer, Extent, ScaleBar, Chart) {
 
       // esriConfig.apiKey = 
-
+      // id: "aaafb684f0e64b5bb62fdf4ff525d209"
       const webmap = new WebMap({
         portalItem: {
-          id: "aaafb684f0e64b5bb62fdf4ff525d209"
+          id: "c0deef933e4a475cb0aa242a987b08e3"
         }
       });
 
@@ -79,7 +79,7 @@
       const ZipLayer = new FeatureLayer({
         url: "https://services6.arcgis.com/LNWU2fk3eLsxJTWk/arcgis/rest/services/Map1/FeatureServer/0"
       });
-
+     
       webmap.add(ZipLayer);
 
       const parcelLayerSQL = [];

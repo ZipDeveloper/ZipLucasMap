@@ -68,7 +68,7 @@
         zoom: 13
       });
 
-      const scaleBar = new ScaleBar({ 
+      const scaleBar = new ScaleBar({
         view: view
       });
       // Add widget to the bottom left corner of the view
@@ -79,14 +79,21 @@
       const ZipLayer = new FeatureLayer({
         url: "https://services6.arcgis.com/LNWU2fk3eLsxJTWk/arcgis/rest/services/Map1/FeatureServer/0"
       });
-     
+
       webmap.add(ZipLayer);
+
+      webmap
+        .when(() => {
+          // This function will execute once the promise is resolved
+          document.getElementById('submitbutton').disabled = false
+        })
+        // .catch(errorHandler);
 
       const parcelLayerSQL = [];
 
       const zipform = document.getElementById('form1');
       const zipinput = document.getElementById('input_zip');
-      console.log(zipform);
+      // console.log(zipform);
       zipform.addEventListener("submit", (event) => {
         event.preventDefault();
         whereClause = "Zip = " + zipinput.value;
@@ -111,7 +118,7 @@
 
           .then((results) => {
 
-            console.log("Feature count: " + results.features.length);
+            // console.log("Feature count: " + results.features.length);
 
             displayResults(results);
 
@@ -153,51 +160,51 @@
         view.graphics.removeAll();
         // Add features to graphics layer
         view.graphics.addMany(results.features);
-        console.log(results.features[0].attributes["DP05_0003E"]);
+        // console.log(results.features[0].attributes["DP05_0003E"]);
         view.goTo(results.features);
 
-        const labels = [
-          'Male',
-          'Female'
-        ];
+        // const labels = [
+        //   'Male',
+        //   'Female'
+        // ];
 
-        const data = {
-          labels: labels,
-          datasets: [{
-            label: 'My First dataset',
-            backgroundColor: ['rgb(255, 99, 132)',
-              'rgb(54, 162, 235)'
-            ],
-            borderColor: 'rgb(255, 99, 132)',
-            data: [results.features[0].attributes["DP05_0002E"], results.features[0].attributes["DP05_0003E"]]
-          }]
-        };
+        // const data = {
+        //   labels: labels,
+        //   datasets: [{
+        //     label: 'My First dataset',
+        //     backgroundColor: ['rgb(255, 99, 132)',
+        //       'rgb(54, 162, 235)'
+        //     ],
+        //     borderColor: 'rgb(255, 99, 132)',
+        //     data: [results.features[0].attributes["DP05_0002E"], results.features[0].attributes["DP05_0003E"]]
+        //   }]
+        // };
 
-        console.log(data);
+        // console.log(data);
 
-        const config = {
-          type: 'pie',
-          data: data,
-          options: {
-            plugins: {
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
+        // const config = {
+        //   type: 'pie',
+        //   data: data,
+        //   options: {
+        //     plugins: {
+        //       legend: {
+        //         display: false
+        //       }
+        //     }
+        //   }
+        // };
 
-        console.log(config);
+        // console.log(config);
 
-        const oldChart = document.getElementById('myChart');
-        const newChart = document.createElement("canvas");
-        newChart.setAttribute("id", "myChart");
-        oldChart.replaceWith(newChart);
+        // const oldChart = document.getElementById('myChart');
+        // const newChart = document.createElement("canvas");
+        // newChart.setAttribute("id", "myChart");
+        // oldChart.replaceWith(newChart);
 
-        const myChart = new Chart(
-          document.getElementById('myChart'),
-          config
-        );
+        // const myChart = new Chart(
+        //   document.getElementById('myChart'),
+        //   config
+        //   );
 
       }
 
@@ -210,15 +217,15 @@
   <form id="form1" style="width:30%; height:10%; margin:20px auto;">
     <label>请输入邮编: <input type="text" id="input_zip"></label>
     <br><br>
-    <button type="submit">查询</button>
+    <button type="submit" id= "submitbutton" disabled = "disabled">查询</button>
   </form>
   <section id="divContainer" style="width: 80%; height: 80%;  margin:auto;
     border: 3px solid #73AD21;">
     <div id="viewDiv"></div>
   </section>
-  <div class="chart-container" style="position: relative; height:30%; width:30%; margin: 30px auto;">
+  <!-- <div class="chart-container" style="position: relative; height:30%; width:30%; margin: 30px auto;">
     <canvas id="myChart"></canvas>
-  </div>
+  </div> -->
 
 </body>
 

@@ -163,48 +163,48 @@
         // console.log(results.features[0].attributes["DP05_0003E"]);
         view.goTo(results.features);
 
-        // const labels = [
-        //   'Male',
-        //   'Female'
-        // ];
+        const labels = [
+          'Male',
+          'Female'
+        ];
 
-        // const data = {
-        //   labels: labels,
-        //   datasets: [{
-        //     label: 'My First dataset',
-        //     backgroundColor: ['rgb(255, 99, 132)',
-        //       'rgb(54, 162, 235)'
-        //     ],
-        //     borderColor: 'rgb(255, 99, 132)',
-        //     data: [results.features[0].attributes["DP05_0002E"], results.features[0].attributes["DP05_0003E"]]
-        //   }]
-        // };
+        const data = {
+          labels: labels,
+          datasets: [{
+            label: 'My First dataset',
+            backgroundColor: ['rgb(255, 99, 132)',
+              'rgb(54, 162, 235)'
+            ],
+            borderColor: 'rgb(255, 99, 132)',
+            data: [results.features[0].attributes["DP05_0002E"], results.features[0].attributes["DP05_0003E"]]
+          }]
+        };
 
-        // console.log(data);
+        console.log(data);
 
-        // const config = {
-        //   type: 'pie',
-        //   data: data,
-        //   options: {
-        //     plugins: {
-        //       legend: {
-        //         display: false
-        //       }
-        //     }
-        //   }
-        // };
+        const config = {
+          type: 'pie',
+          data: data,
+          options: {
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        };
 
-        // console.log(config);
+        console.log(config);
 
-        // const oldChart = document.getElementById('myChart');
-        // const newChart = document.createElement("canvas");
-        // newChart.setAttribute("id", "myChart");
-        // oldChart.replaceWith(newChart);
+        const oldChart = document.getElementById('myChart');
+        const newChart = document.createElement("canvas");
+        newChart.setAttribute("id", "myChart");
+        oldChart.replaceWith(newChart);
 
-        // const myChart = new Chart(
-        //   document.getElementById('myChart'),
-        //   config
-        //   );
+        const myChart = new Chart(
+          document.getElementById('myChart'),
+          config
+          );
 
       }
 
@@ -223,9 +223,9 @@
     border: 3px solid #73AD21;">
     <div id="viewDiv"></div>
   </section>
-  <!-- <div class="chart-container" style="position: relative; height:30%; width:30%; margin: 30px auto;">
+  <div class="chart-container" style="position: relative; height:30%; width:30%; margin: 30px auto;">
     <canvas id="myChart"></canvas>
-  </div> -->
+  </div>
 
 </body>
 
